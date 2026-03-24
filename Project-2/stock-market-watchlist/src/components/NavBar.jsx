@@ -1,30 +1,55 @@
 import { NavLink } from "react-router-dom";
 
-export default function NavBar () {
+export default function NavBar() {
+  return (
+    <nav className="bg-gray-900 border-b border-gray-800">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex gap-6 text-sm font-medium">
 
-    return (
-        <nav>
-            <ul>
-                <li>
-                    <NavLink to ="/">Home</NavLink>
-                </li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-400"
+              : "text-gray-400 hover:text-white transition"
+          }
+        >
+          Home
+        </NavLink>
 
-                <li>
-                    <NavLink to = '/add-stock-to-watchlist'> Add Stocks to Watchlist</NavLink>
-                </li>
-                
-                <li>
-                    <NavLink to = '/watchlist'>Watchlist</NavLink>
-                </li>
+        <NavLink
+          to="/watchlist/add"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-400"
+              : "text-gray-400 hover:text-white transition"
+          }
+        >
+          Add Stock
+        </NavLink>
 
-                <li>
-                    <NavLink to ="/keyindex">Key Indexes</NavLink>
-                </li>
-            </ul>
+        <NavLink
+          to="/watchlist"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-400"
+              : "text-gray-400 hover:text-white transition"
+          }
+        >
+          Watchlist
+        </NavLink>
 
+        <NavLink
+          to="/keyindex"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-400"
+              : "text-gray-400 hover:text-white transition"
+          }
+        >
+          Key Indexes
+        </NavLink>
 
-        </nav>
-
-
-    )
+      </div>
+    </nav>
+  )
 }

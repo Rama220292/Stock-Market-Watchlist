@@ -36,12 +36,6 @@ export default function AddStockFormPage({ watchList }){
             <h2> Add Stock </h2>
 
             <AddStockForm addStock = {addStock}/>
-
-            {tickerList.map((ticker, index) => 
-                (<div key = {index}>
-                    <h2>{ticker}</h2>
-                </div>
-                ))}
         
         </>
     )
