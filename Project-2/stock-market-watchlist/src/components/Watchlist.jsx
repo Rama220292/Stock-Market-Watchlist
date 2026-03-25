@@ -1,7 +1,9 @@
+import { getCompanyName } from "../components/stockService";
+
 export default function Watchlist({ watchlist, watchlistData, handleRemove }) {
 
   if (!watchlistData.length) {
-    return <p className="text-gray-400">Loading...</p>
+    return <p className="text-gray-400 animate-pulse">Loading...</p>;
   }
 
   return (
@@ -13,14 +15,19 @@ export default function Watchlist({ watchlist, watchlistData, handleRemove }) {
         return (
           <div
             key={watchlist[i].id}
-            className="bg-gray-900 p-5 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition"
+            className="bg-gray-900/70 backdrop-blur p-5 rounded-2xl border border-gray-800 hover:border-gray-600 hover:shadow-xl hover:-translate-y-1 transition"
           >
-            <h2 className="text-xl font-semibold mb-2">
-              {watchlist[i].fields.Name}
-            </h2>
+            <div className="flex justify-between items-center mb-3">
+              <h2 className="text-lg font-semibold">
+                {getCompanyName(ticker).result[0].description}
+              </h2>
 
-            <p className="text-gray-400 text-sm">Price</p>
-            <p className="text-2xl font-bold mb-2">
+              <span className={`text-xs px-2 py-1 rounded-full ${isPositive ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}`}>
+                {isPositive ? "UP" : "DOWN"}
+              </span>
+            </div>
+
+            <p className="text-3xl font-bold mb-1">
               ${stock?.c}
             </p>
 
@@ -30,13 +37,13 @@ export default function Watchlist({ watchlist, watchlistData, handleRemove }) {
 
             <button
               onClick={() => handleRemove(watchlist[i].id)}
-              className="mt-4 text-sm text-red-400 hover:text-red-300 transition"
+              className="mt-5 w-full py-2 text-sm rounded-xl bg-red-500/10 text-red-400 hover:bg-red-500/20 transition"
             >
               Remove
             </button>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

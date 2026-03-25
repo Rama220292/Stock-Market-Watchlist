@@ -1,10 +1,7 @@
-import { useEffect, useState } from "react";
-import { getStock } from "./stockService";
-
 export default function KeyIndex({ indexes, keyIndexName }) {
 
   if (!indexes.length) {
-    return <p className="text-gray-400">Loading...</p>
+    return <p className="text-gray-400 animate-pulse">Loading...</p>;
   }
 
   return (
@@ -16,7 +13,7 @@ export default function KeyIndex({ indexes, keyIndexName }) {
         return (
           <div
             key={i}
-            className="bg-gray-900 p-5 rounded-2xl shadow-md"
+            className="bg-gray-900/70 p-5 rounded-2xl border border-gray-800"
           >
             <h2 className="text-lg font-semibold mb-2">
               {keyIndexName[i]}
@@ -30,8 +27,8 @@ export default function KeyIndex({ indexes, keyIndexName }) {
               {Number(change.toFixed(2))}%
             </p>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

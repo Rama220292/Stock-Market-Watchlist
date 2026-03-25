@@ -20,6 +20,24 @@ export async function getStock(ticker) {
   }
 }
 
+export async function getCompanyName(ticker) {
+  const url = `https://finnhub.io/api/v1/search?q=${ticker}&exchange=US&token=${FINNHUB_TOKEN}`
+ 
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    return result 
+
+  } catch (error) {
+    console.error(error.message);
+    return null
+  }
+}
+
 export async function addStockToWatchlist(ticker) {
   const url = `https://api.airtable.com/v0/appuSI8OLcgauprpw/Table%201`;
 
