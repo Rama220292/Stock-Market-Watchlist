@@ -19,7 +19,7 @@ export default function Watchlist({ watchlist, watchlistData, handleRemove }) {
           >
             <div className="flex justify-between items-center mb-3">
               <h2 className="text-lg font-semibold">
-                {getCompanyName(ticker).result[0].description}
+                {watchlist[i]?.fields?.Name} 
               </h2>
 
               <span className={`text-xs px-2 py-1 rounded-full ${isPositive ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}`}>

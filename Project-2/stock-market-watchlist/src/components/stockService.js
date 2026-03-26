@@ -30,6 +30,28 @@ export async function getCompanyName(ticker) {
     }
 
     const result = await response.json();
+    if (!Array.isArray(result)) {
+      return [];
+    }
+    
+    return result 
+
+  } catch (error) {
+    console.error(error.message);
+    return null
+  }
+}
+
+export async function getAllTickers() {
+  const url = `https://static2.finnhub.io/file/privatedatany2/exchange/USf.json?Authorization=3_20260325235247_373f29333994198d94837265_1df8e82ecb200b2c03f9acbaebb23d36eff4dd7b_002_20260326235247_0017_dnld`
+ 
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const result = await response.json();
     return result 
 
   } catch (error) {
